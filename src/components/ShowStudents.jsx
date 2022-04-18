@@ -1,19 +1,21 @@
-import axios from "axios";
+
 import { useState, useEffect } from "react";
-
-
 export const ShowStudents = () => {
+    const [ Studnetdata, setStudentdata] = useState([]);
 
-  const [showstudentsData, setShowStudentsData] = useState([]);
-  useEffect(() => {
-    axios.get("http://localhost:8080/students").then((res) => {
-      setShowStudentsData(res.data);
-    });
-    return () => {
-      setShowStudentsData([]);
-    };
-  }, []);
+    useEffect(() =>{
+        getData();
+    },[]);
 
+    async function getData()
+    {
+        const data = await fetch("http://localhost:8080/students").then((element) =>
+
+            element.json()
+        )
+        console.log(data);
+        setStudentdata(data);
+    }
     return (
       <div>
         <div className="controls">
@@ -57,21 +59,23 @@ export const ShowStudents = () => {
           </thead>
           <tbody className="tbody">
             {/* populate all rows like below: */}
-            {showstudentsData.map((student,index)=>{
-             return (
-              <tr className="row">
-              <td className="first_name">{student.first_name}</td>
-              <td className="last_name">{student.last_name}</td>
-              <td className="email">{student.email}</td>
-              <td className="gender">{student.gender}</td>
-              <td className="age">{student.age}</td>
-              <td className="tenth_score">{student.tenth_score}</td>
-              <td className="twelth_score">{student.twelth_score}</td>
-              <td className="preferred_branch">{student.preferred_branch}</td>
-            </tr>
-             )
+            {Studnetdata.map((element) =>{
+                
+                return (
+
+                    <tr className="row">
+                        <td className="first_name">{element.first_name}</td>
+                        <td className="last_name">{element.last_name}</td>
+                        <td className="email">{element.email}</td>
+                        <td className="gender">{element.gender}</td>
+                        <td className="age">{element.age}</td>
+                        <td className="tenth_score">{element.tenth_score}</td>
+                        <td className="twelth_score">{element.twelth_score}</td>
+                        <td className="preferred_branch">{element.preferred_branch}</td>
+                    </tr>
+
+                )
             })}
-           
           </tbody>
         </table>
       </div>

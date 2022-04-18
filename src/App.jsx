@@ -1,24 +1,21 @@
+
+import './App.css';
+
 import { AddStudent } from "./components/AddStudent";
 import { ShowStudents } from "./components/ShowStudents";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 function App() {
-  const [toggleButtonForForm, setToggleButtonForForm] = useState(false);
-
+  const [ Show, setShow ] = useState(true);
   return (
     <div className="App">
-      <button className="togglebtn"
-      onClick={() => setToggleButtonForForm(!toggleButtonForForm)}
-      >
-        {toggleButtonForForm ? "AddStudent" : "ShowStudents"}
-      </button>
-      <AddStudent/>
+      <button className="togglebtn" onClick={() =>{
+        setShow(!Show);
+
+      }}>{Show ? "Add a new student" : "go to students list"}</button>
       {/* Show either  AddStudent component or ShowStudents dependeing on the above button click  */}
       {/* make sure the table is shown initially, do not show form initially */}
       {/* make sure to show either of them do not both together */}
-      <br />
-      <br />
-      {toggleButtonForForm ? < AddStudent/> : <ShowStudents />}
+      {Show ? <ShowStudents /> : <AddStudent />}
     </div>
   );
 }

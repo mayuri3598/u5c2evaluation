@@ -1,66 +1,62 @@
-import { useState } from "react";
-import axios from "axios";
 
-
+import { useState, useEffect, useRef } from "react";
 
 export const AddStudent = () => {
+    const [ Formdata, setFormdata ] = useState({
+        first_name : "",
+        last_name : "",
+        email : "",
+        gender : "",
+        age : "",
+        tenth_score : "",
+        twelth_score : "",
+        
+        preferred_branch : "",
+        
+    })
+    
+    const handleChange = (e) =>{
+        const { name , value } = e.target;
+        console.log('value:', value)
+        console.log('name:', name)
+        setFormdata({
+            ...Formdata,
+            [name] : value,
+        })
+    }
+    
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        console.log("Hello");
 
-    const [addstudentData, setAddStudent] = useState({
-        first_name: "",
-        last_name: "",
-        email: "",
-        gender: "",
-        age: "",
-        tenth_score: "",
-        twelth_score: "",
-        preferred_branch: ""
-      });
-
-
-      const handleChange = (e) => {
-        const { className, value } = e.target;
-        setAddStudent({ ...addstudentData, [className]: value });
-      };
-
-      const handleSubmit=(e)=>{
-       e.preventDefault()
-        //   console.log(addstudentData)
-        //   fetch("http://localhost:8080",{method:"students",body:JSON.stringify(addstudentData)})
-
-        axios.post("http://localhost:8080/students",addstudentData ).then((res) => {
-            console.log( res.data);
-          });
-      }
-
-
+        console.log('Formdata:', Formdata)
+        fetch("http://localhost:8080/students",{
+            method : "POST",
+            headers : {
+                "content-type" : "application/json"
+            },
+            body : JSON.stringify(Formdata)
+        })
+    }
     return (
-      <form className="addstudent"
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-      >
+      <form className="addstudent" onSubmit={handleSubmit}>
         <div>
           Firstname:{" "}
           <input
+            onChange={handleChange}
             type="text"
-            onChange={(e) => {
-                handleChange(e);
-              }}
             name="first_name"
             className="first_name"
             placeholder="enter first name"
-            value={addstudentData.first_name}
           />
         </div>
         <div>
           {" "}
           Last Name:
           <input
-          value={addstudentData.last_name}
+
+            onChange={handleChange}
             type="text"
-            onChange={(e) => {
-                handleChange(e);
-              }}
             name="last_name"
             className="last_name"
             placeholder="enter last name"
@@ -70,12 +66,8 @@ export const AddStudent = () => {
           {" "}
           Email:
           <input
-         value={addstudentData.email}
-
+            onChange={handleChange}
             type="email"
-            onChange={(e) => {
-                handleChange(e);
-              }}
             name="email"
             className="email"
             placeholder="enter email"
@@ -87,24 +79,16 @@ export const AddStudent = () => {
           <div>
             Male
             <input
-            value={addstudentData.gender}
-
+              onChange={handleChange}
               name="gender"
-              onChange={(e) => {
-                handleChange(e);
-              }}
               className="male"
               type="radio"
               value={"male"}
             />{" "}
             Female{" "}
             <input
-            value={addstudentData.gender}
-
+              onChange={handleChange}
               name="gender"
-              onChange={(e) => {
-                handleChange(e);
-              }}
               className="female"
               type="radio"
               value={"female"}
@@ -114,13 +98,8 @@ export const AddStudent = () => {
         <div>
           Age{" "}
           <input
-
-value={addstudentData.age}
-
+            onChange={handleChange}
             type="number"
-            onChange={(e) => {
-                handleChange(e);
-              }}
             name="age"
             className="age"
             placeholder="enter age"
@@ -129,12 +108,8 @@ value={addstudentData.age}
         <div>
           Tenth Score:{" "}
           <input
-                    value={addstudentData.tenth_score}
-
+            onChange={handleChange}
             type="number"
-            onChange={(e) => {
-                handleChange(e);
-              }}
             name="tenth_score"
             className="tenth_score"
             placeholder="enter 10th score"
@@ -143,12 +118,8 @@ value={addstudentData.age}
         <div>
           Twelth Score:{" "}
           <input
-                    value={addstudentData.twelth_score}
-
+            onChange={handleChange}
             type="number"
-            onChange={(e) => {
-                handleChange(e);
-              }}
             name="twelth_score"
             className="twelth_score"
             placeholder="enter 12th score"
@@ -156,13 +127,9 @@ value={addstudentData.age}
         </div>
         <div>
           <select
+            onChange={handleChange}
             value={""} // select dropdown needs both value and onChange attributes
             name="preferred_branch"
-            value={addstudentData.preferred_branch}
-
-            onChange={(e) => {
-                handleChange(e);
-              }}
             className="preferred_branch"
           >
             <option value="law">law</option>

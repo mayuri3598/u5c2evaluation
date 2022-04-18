@@ -1,3 +1,4 @@
+
 {
   "students": [
     {
@@ -87,66 +88,6 @@
       "tenth_score": 43,
       "twelth_score": 74,
       "preferred_branch": "commerce"
-    },
-    {
-      "first_name": "Gudivada",
-      "last_name": "RAMESH",
-      "email": "rameshgudivada9@gmail.com",
-      "gender": "",
-      "age": "24",
-      "tenth_score": "500",
-      "twelth_score": "12",
-      "preferred_branch": "science",
-      "male": "male",
-      "id": 9
-    },
-    {
-      "first_name": "suji",
-      "last_name": "ola",
-      "email": "suiji@gmail",
-      "gender": "",
-      "age": "20",
-      "tenth_score": "500",
-      "twelth_score": "600",
-      "preferred_branch": "science",
-      "female": "",
-      "id": 10
-    },
-    {
-      "first_name": "ram",
-      "last_name": "esh",
-      "email": "df@gmail.com",
-      "gender": "",
-      "age": "22",
-      "tenth_score": "34",
-      "twelth_score": "23",
-      "preferred_branch": "sports",
-      "male": "gender",
-      "id": 11
-    },
-    {
-      "first_name": "Gudivada",
-      "last_name": "RAMESH",
-      "email": "rameshgudivada9@gmail.com",
-      "gender": "",
-      "age": "33",
-      "tenth_score": "34",
-      "twelth_score": "34",
-      "preferred_branch": "sports",
-      "male": "male",
-      "id": 12
-    },
-    {
-      "first_name": "Gudivada",
-      "last_name": "RAMESH",
-      "email": "rameshgudivada9@gmail.com",
-      "gender": "",
-      "age": "33",
-      "tenth_score": "34",
-      "twelth_score": "34",
-      "preferred_branch": "sports",
-      "male": "male",
-      "id": 13
     }
   ]
 }
